@@ -1,0 +1,13 @@
+.Links {
+  display: flex;
+  @include WrapperContentMixin();
+
+  .Link {
+    height: 100%;
+    margin: 10px;
+  }
+
+  .Link--active {
+    color: $red;
+  }
+}

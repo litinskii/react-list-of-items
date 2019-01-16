@@ -1,0 +1,17 @@
+.LoaderOverlay {
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .LoaderOverlay__image {
+    width: 48px;
+    height: 48px;
+  }
+}

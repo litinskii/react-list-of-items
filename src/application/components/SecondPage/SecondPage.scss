@@ -1,0 +1,12 @@
+.SecondPage {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  @include WrapperContentMixin();
+
+  .SecondPage__clicks {
+    padding: 10px;
+  }
+}

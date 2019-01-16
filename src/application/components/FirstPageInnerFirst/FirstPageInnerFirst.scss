@@ -1,0 +1,11 @@
+.FirstPageInnerFirst {
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: column;
+  @include WrapperContentMixin();
+
+  .FirstPageInnerFirst__params-id {
+    padding: 10px;
+    flex: 1 1 auto;
+  }
+}
