@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import { Component, createRef } from "react";
 
 class PortView extends Component {
   constructor(props) {
@@ -6,17 +6,10 @@ class PortView extends Component {
     this.ref = createRef();
   }
 
-  componentDidMount() {}
-
   render() {
-    const { props } = this;
     const { children } = this.props;
 
-    return (
-      <div {...props} ref={this.ref}>
-        {children}
-      </div>
-    );
+    return children;
   }
 }
 
