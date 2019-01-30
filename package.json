@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "react-list-of-items",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/w-site/react-app.git"
+    "url": "git+https://github.com/litinskii/react-list-of-items.git"
   },
   "engines": {
     "node": "v9.1.0",
@@ -20,9 +20,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/w-site/react-app/issues"
+    "url": "https://github.com/litinskii/react-list-of-items/issues"
   },
-  "homepage": "https://github.com/w-site/react-app#readme",
+  "homepage": "https://github.com/litinskii/react-list-of-items#readme",
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.2.2",
