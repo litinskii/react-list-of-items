@@ -1,8 +1,0 @@
-.GlobalClicksCount {
-  display: flex;
-  @include WrapperContentMixin();
-
-  .GlobalClicksCount__clicks {
-    padding: 10px;
-  }
-}

@@ -6,22 +6,21 @@ const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const jsonServer = require("json-server");
 
 module.exports = {
   entry: "./src/application/index.js",
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: [/node_modules/, path.join(__dirname, "src/application/assets/")],
-        enforce: "pre",
-        loader: "eslint-loader",
-        options: {
-          failOnWarning: false,
-          failOnError: true
-        }
-      },
+      //{
+      //  test: /\.(js|jsx)$/,
+      //  exclude: [/node_modules/, path.join(__dirname, "src/application/assets/")],
+      //  enforce: "pre",
+      //  loader: "eslint-loader",
+      //  options: {
+      //    failOnWarning: false,
+      //    failOnError: true
+      //  }
+      //},
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
@@ -100,12 +99,6 @@ module.exports = {
   },
   stats: !IS_PRODUCTION,
   devServer: {
-    before: server => {
-      server.use("/api", jsonServer.defaults());
-      server.use("/api", jsonServer.bodyParser);
-      server.use("/api", (req, res, next) => setTimeout(next, 500));
-      server.use("/api", jsonServer.router(path.join(__dirname, "src/db.json")));
-    },
     port: 3000,
     historyApiFallback: true
     // host: '0.0.0.0',

@@ -9,8 +9,3 @@
   @include WrapperMixin();
   border-color: $black;
 }
-
-@mixin WrapperNoContentMixin {
-  @include WrapperMixin();
-  border-color: $red;
-}

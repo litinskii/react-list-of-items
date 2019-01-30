@@ -1,0 +1,64 @@
+.Home {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  @include WrapperContentMixin();
+
+  .Home__list-of-items {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .Home__list-of-item {
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include WrapperContentMixin();
+  }
+
+  .Home__sizes {
+    display: flex;
+    flex: 0 0 300px;
+    justify-content: center;
+    align-items: center;
+    @include WrapperContentMixin();
+  }
+
+  .Home__size {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    @include WrapperContentMixin();
+  }
+
+  .test {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+    visibility: hidden;
+    max-width: 100%;
+  }
+
+  .test1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0s;
+    width: 200%;
+    height: 200%;
+  }
+}

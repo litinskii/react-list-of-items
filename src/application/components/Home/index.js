@@ -1,36 +1,40 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import withStore from "../../common/withStore";
-import withResetStoreOnMountAndUnMount from "../../common/withResetStoreOnMountAndUnMount";
-import store from "./store";
-import globalStore from "../globalStore";
-import "./Home.scss";
-import LoaderOverlay from "../LoaderOverlay";
+import { range, map } from "lodash";
+import PortView from "../PortView";
+import ResizeObservable from "../ResizeObservable";
+import "./style.scss";
 
-const countClicks = async () => {
-  await store.incrementHomePageClicksCount();
-  globalStore.loadAllClicksCount();
-};
+export default class extends Component {
+  static displayName = "Home";
 
-class Home extends Component {
-  async componentDidMount() {
-    store.loadHomePageClicksCount();
-  }
+  state = {
+    size: 100
+  };
 
   render() {
-    const { homePageClicksCount, loading } = this.props;
+    const { size } = this.state;
+
     return (
-      <div className="Home e2e-home" onClick={countClicks}>
-        {loading ? <LoaderOverlay /> : undefined}
-        <div className="Home__clicks e2e-home-clicked-counter">{`Home clicks: ${homePageClicksCount}`}</div>
+      <div className="Home">
+        <div className="Home__sizes">
+          <div className="Home__size" onClick={() => this.setState({ size: 100 })}>
+            100
+          </div>
+          <div className="Home__size" onClick={() => this.setState({ size: 5000 })}>
+            5000
+          </div>
+        </div>
+        <div className="Home__list-of-items">
+          <ResizeObservable onChange={console.log}>
+            {map(range(size), i => (
+              <div key={i} onClick={() => console.log(++i)} className="Home__list-of-item">
+                {++i}
+              </div>
+            ))}
+          </ResizeObservable>
+        </div>
       </div>
     );
   }
 }
-
-Home.propTypes = {
-  homePageClicksCount: PropTypes.number.isRequired,
-  loading: PropTypes.bool.isRequired
-};
-
-export default withResetStoreOnMountAndUnMount(withStore(Home, store), store);
