@@ -11,16 +11,16 @@ module.exports = {
   entry: "./src/application/index.js",
   module: {
     rules: [
-      //{
-      //  test: /\.(js|jsx)$/,
-      //  exclude: [/node_modules/, path.join(__dirname, "src/application/assets/")],
-      //  enforce: "pre",
-      //  loader: "eslint-loader",
-      //  options: {
-      //    failOnWarning: false,
-      //    failOnError: true
-      //  }
-      //},
+      {
+        test: /\.(js|jsx)$/,
+        exclude: [/node_modules/, path.join(__dirname, "src/application/assets/")],
+        enforce: "pre",
+        loader: "eslint-loader",
+        options: {
+          failOnWarning: false,
+          failOnError: true
+        }
+      },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,

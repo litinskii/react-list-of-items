@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { range, map } from "lodash";
 import PortView from "../PortView";
 import ResizeObservable from "../ResizeObservable";
@@ -26,12 +25,14 @@ export default class extends Component {
           </div>
         </div>
         <div className="Home__list-of-items">
-          <ResizeObservable onChange={console.log}>
-            {map(range(size), i => (
-              <div key={i} onClick={() => console.log(++i)} className="Home__list-of-item">
-                {++i}
-              </div>
-            ))}
+          <ResizeObservable onChange={console.warn}>
+            <PortView>
+              {map(range(size), i => (
+                <div key={i} className="Home__list-of-item">
+                  {i + 1}
+                </div>
+              ))}
+            </PortView>
           </ResizeObservable>
         </div>
       </div>

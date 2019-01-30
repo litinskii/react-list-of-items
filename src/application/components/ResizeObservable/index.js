@@ -27,10 +27,6 @@ export default class extends Component {
     onChange: PropTypes.func.isRequired
   };
 
-  refOfExpandContainer = createRef();
-  refOfExpandScrolledElement = createRef();
-  refOfCollapseContainer = createRef();
-
   state = { width: 0, height: 0 };
 
   componentDidMount() {
@@ -63,6 +59,10 @@ export default class extends Component {
     this.setState({ width, height });
   }, 500);
 
+  refOfExpandContainer = createRef();
+  refOfExpandScrolledElement = createRef();
+  refOfCollapseContainer = createRef();
+
   render() {
     const { children } = this.props;
     const { width, height } = this.state;
@@ -70,11 +70,8 @@ export default class extends Component {
     return (
       <Fragment>
         {children}
-        <div ref={this.refOfExpandContainer}
-             style={styleForContainersOfScroll}
-             onScroll={this.setWidthAndHeight}>
-          <div ref={this.refOfExpandScrolledElement}
-               style={{ width: width + 1, height: height + 1 }} />
+        <div ref={this.refOfExpandContainer} style={styleForContainersOfScroll} onScroll={this.setWidthAndHeight}>
+          <div ref={this.refOfExpandScrolledElement} style={{ width: width + 1, height: height + 1 }} />
         </div>
         <div ref={this.refOfCollapseContainer} style={styleForContainersOfScroll} onScroll={this.setWidthAndHeight}>
           <div style={styleForCollapsedScrolledElement} />
