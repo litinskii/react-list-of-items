@@ -27,6 +27,7 @@
     "jsx-a11y/no-static-element-interactions": 0,
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "object-curly-newline": 1,
-    "react/prop-types": ["error", { "ignore": ["children"] }]
+    "react/prop-types": ["error", { "ignore": ["children"] }],
+    "no-mixed-operators": 1
   }
 }
