@@ -16,6 +16,13 @@ export default class PortView extends Component {
 
   state = { topOffset: 0, startItemIndex: 0, sizeOfItemsToRender: 1, bottomOffset: 0, height: 0 };
 
+  componentDidUpdate(prevProps, prevState) {
+    const { height, children } = this.state;
+    if (height !== prevState.height || Children.count(children) !== Children.count(prevProps.children)) {
+      this.setSizes();
+    }
+  }
+
   setSizes = throttle(() => {
     const { children } = this.props;
     const heightOfItem = this.childRef.current.offsetHeight;
@@ -30,12 +37,6 @@ export default class PortView extends Component {
   }, 250);
 
   setHeight = ({ height }) => this.setState({ height });
-
-  conmponentDidUpdate(prevProps, prevState) {
-    if (this.state.height !== prevState.height) {
-      this.setSizes();
-    }
-  }
 
   rootRef = createRef();
 
