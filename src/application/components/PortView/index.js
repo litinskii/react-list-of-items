@@ -17,24 +17,34 @@ export default class PortView extends Component {
   state = { topOffset: 0, startItemIndex: 0, sizeOfItemsToRender: 1, bottomOffset: 0, height: 0 };
 
   componentDidUpdate(prevProps, prevState) {
-    const { height, children } = this.state;
+    const { height } = this.state;
+    const { children } = this.props;
+
     if (height !== prevState.height || Children.count(children) !== Children.count(prevProps.children)) {
       this.setSizes();
     }
   }
 
   setSizes = throttle(() => {
+    const { height } = this.state;
     const { children } = this.props;
+    const { scrollTop } = this.rootRef.current;
+
+    if (!this.childRef.current) {
+      this.setState({ topOffset: 0, startItemIndex: 0, bottomOffset: 0 });
+      this.rootRef.current.scrollTop = 0;
+      return;
+    }
+
     const heightOfItem = this.childRef.current.offsetHeight;
-    const { clientHeight, scrollTop } = this.rootRef.current;
 
     const startItemIndex = (Math.ceil(scrollTop / heightOfItem) || 1) - 1;
     const topOffset = startItemIndex * heightOfItem;
-    const sizeOfItemsToRender = Math.ceil(clientHeight / heightOfItem) + 1;
+    const sizeOfItemsToRender = Math.ceil(height / heightOfItem) + 1;
     const bottomOffset = Children.toArray(children).length * heightOfItem - sizeOfItemsToRender * heightOfItem - topOffset;
 
     this.setState({ topOffset, startItemIndex, sizeOfItemsToRender, bottomOffset: bottomOffset > 0 ? bottomOffset : 0 });
-  }, 250);
+  }, 100);
 
   setHeight = ({ height }) => this.setState({ height });
 
