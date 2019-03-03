@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { throttle } from "lodash";
 import ResizeObservable from "../ResizeObservable";
 
-export default class PortView extends Component {
-  static displayName = "PortView";
+export default class ViewPort extends Component {
+  static displayName = "ViewPort";
 
   static propTypes = {
     className: PropTypes.string

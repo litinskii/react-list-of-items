@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { range, map } from "lodash";
-import PortView from "../PortView";
+import ViewPort from "../ViewPort";
 import "./style.scss";
 
 export default class extends Component {
@@ -23,13 +23,13 @@ export default class extends Component {
             5000
           </div>
         </div>
-        <PortView className="Home__list-of-items">
+        <ViewPort className="Home__list-of-items">
           {map(range(size), i => (
             <div key={i} className="Home__list-of-item">
               {i + 1}
             </div>
           ))}
-        </PortView>
+        </ViewPort>
       </div>
     );
   }
