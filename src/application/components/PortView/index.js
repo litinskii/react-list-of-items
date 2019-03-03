@@ -36,13 +36,14 @@ export default class PortView extends Component {
       return;
     }
 
-    const heightOfItem = this.childRef.current.offsetHeight;
+    const { marginTop, marginBottom } = getComputedStyle(this.childRef.current);
+    const heightOfItem = this.childRef.current.offsetHeight + parseInt(marginTop, 10) + parseInt(marginBottom, 10);
 
-    const startItemIndex = (Math.ceil(scrollTop / heightOfItem) || 1) - 1;
+    const sizeOfItemsToHidden = Math.ceil(scrollTop / heightOfItem);
+    const startItemIndex = sizeOfItemsToHidden > 0 ? sizeOfItemsToHidden - 1 : 0;
     const topOffset = startItemIndex * heightOfItem;
     const sizeOfItemsToRender = Math.ceil(height / heightOfItem) + 1;
     const bottomOffset = Children.toArray(children).length * heightOfItem - sizeOfItemsToRender * heightOfItem - topOffset;
-
     this.setState({ topOffset, startItemIndex, sizeOfItemsToRender, bottomOffset: bottomOffset > 0 ? bottomOffset : 0 });
   }, 100);
 
